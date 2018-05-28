@@ -13,6 +13,7 @@ END
 
 
 cd $THIS_DIR
+# submoduleのアップデートの実施
 git submodule init
 git submodule update
 
@@ -39,6 +40,15 @@ done
 cd $THIS_DIR
 
 # [ -e ~/.gitconfig.local ] || cp ~/dotfiles/.gitconfig.local.template ~/.gitconfig.local
+
+# zprezto
+cd $THIS_DIR
+ln -snfv $HOME/.zprezto/runcoms/zlogin ~/.zlogin
+ln -snfv $HOME/.zprezto/runcoms/zlogout ~/.zlogout
+ln -snfv $HOME/.zprezto/runcoms/zpreztorc ~/.zpreztorc
+ln -snfv $HOME/.zprezto/runcoms/zprofile ~/.zprofile
+ln -snfv $HOME/.zprezto/runcoms/zshenv ~/.zshenv
+
 
 
 cat << END

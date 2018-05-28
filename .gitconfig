@@ -1,0 +1,19 @@
+[user]
+	name = Tokida Hideaki
+	email = tokihide@gmail.com
+[core]
+	excludesfile = /Users/hideaki/.gitignore_global
+	autocrlf = input
+	editor = vim
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[github]
+	user = tokida
+[color]
+	ui = auto
+[diff]
+	compactionHeuristic = true

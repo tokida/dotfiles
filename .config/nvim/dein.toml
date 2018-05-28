@@ -1,0 +1,165 @@
+# 起動時のスタートアップ画面の表示
+[[plugins]]
+repo = 'mhinz/vim-startify'
+hook_add = '''
+		let g:startify_custom_header =
+			\ map(split(system('date | cowsay'), '\n'), '"   ". v:val') + ['','']
+		let g:startify_files_number = 5
+		let g:startify_session_autoload = 1
+		let g:startify_bookmarks = [
+			\ '~/Desktop/メモ/' . strftime('%Y-%m-%d') .'.md',
+			\ '~/.config/nvim/init.vim',
+			\ '~/.config/nvim/dein.toml',
+			\ '~/.config/nvim/dein_lazy.toml',
+			\ '~/Desktop/vim_useage.md'
+			\]
+'''
+
+
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+
+[[plugins]] # カラースキーマ
+repo = 'gosukiwi/vim-atom-dark'
+hook_add = '''
+		set background=dark
+'''
+
+[[plugins]] # カラースキーマ
+repo = 'jacoborus/tender.vim'
+hook_add = '''
+'''
+
+[[plugins]] # カラースキーマ
+repo = 'nanotech/jellybeans.vim'
+hook_add = '''
+'''
+
+
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+hook_add = '''
+		let g:hybrid_custom_term_colors = 1
+		let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+'''
+
+
+[[plugins]]
+repo = 'rhysd/vim-gfm-syntax'
+hook_add = '''
+'''
+
+
+[[plugins]] # toml syntax
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+
+
+
+[[plugins]] # status line
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+		let g:airline_theme = 'tender'
+		let g:airline_powerline_fonts = 1
+		set laststatus=2
+		" let g:airline_extensions = []
+		let g:airline#extensions#branch#enabled = 1
+		" tab(Buffer)の設定
+		let g:airline#extensions#tabline#buffer_idx_mode = 1
+		let g:airline#extensions#tabline#enabled = 1
+		let g:airline#extensions#wordcount#enabled = 0
+		" let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
+		" let g:airline_section_c = '%t'
+		" let g:airline_section_x = '%{&filetype}'
+		" let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
+		let g:airline#extensions#default#section_truncate_width = {}
+		let g:airline#extensions#whitespace#enabled = 1
+		" Lintツールによるエラー、警告を表示(ALEの拡張)
+		let g:airline#extensions#ale#enabled = 1
+		let g:airline#extensions#ale#error_symbol = ''
+		let g:airline#extensions#ale#warning_symbol = ''
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+# [[plugins]] # status line plugin
+# repo = 'enricobacis/vim-airline-clock'
+# hook_add = '''
+# 		let g:airline#extensions#clock#format = '%H:%M:%S'
+# 		let g:airline#extensions#clock#updatetime = 1000
+# '''
+
+# ファイルツリー表示
+# https://github.com/scrooloose/nerdtree
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+		" .ファイルの表示（1: 表示）
+		let NERDTreeShowHidden=0
+		" ブックマークを表示 (1:表示)
+		let g:NERDTreeShowBookmarks=1
+		" 引数なしで起動した場合、NERDTreeを開く
+		" autocmd vimenter * if !argc() | NERDTree | endif
+		" 表示・非表示切り替え
+		map <C-n> :NERDTreeToggle<CR>
+		let g:NERDTreeMouseMode=2
+		"他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
+		" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+'''
+
+# Nerdtree plugin
+# ディレクトリツリーにてファイルの左側にgitのステータスを表示する
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+hook_add = '''
+		let g:NERDTreeIndicatorMapCustom = {
+			\ "Modified"  : "✹",
+			\ "Staged"    : "✚",
+			\ "Untracked" : "✭",
+			\ "Renamed"   : "➜",
+			\ "Unmerged"  : "═",
+			\ "Deleted"   : "✖",
+			\ "Dirty"     : "✗",
+			\ "Clean"     : "✔︎",
+			\ 'Ignored'   : '☒',
+			\ "Unknown"   : "?"
+			\ }
+'''
+
+# Terminal 
+[[plugins]]
+repo = 'kassio/neoterm'
+hook_add = '''
+'''
+
+
+# Windowsサイズの変更補助のプラグイン
+[[plugins]]
+repo = 'simeji/winresizer'
+hook_add = '''
+	let g:winresizer_vert_resize = 2
+	let g:winresizer_horiz_resize = 2
+'''
+
+
+# Active Window Control
+[[plugins]]
+repo = 'blueyed/vim-diminactive'
+hook_add = '''
+	" deactive の色
+	hi ColorColumn ctermbg=0 guifg=#808080
+	" deactive のウィンドウにはSyntaxハイライトを無効にする
+	let g:diminactive_use_syntax = 1
+	let g:diminactive_buftype_blacklist = ['nofile', 'nowrite', 'acwrite', 'quickfix', 'help']
+	let g:diminactive_filetype_blacklist = ['startify']
+	let g:diminactive_buftype_whitelist = []
+	let g:diminactive_filetype_whitelist = []
+'''
+
