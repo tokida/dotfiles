@@ -118,7 +118,7 @@ endif
 
 
 " Required:
-set runtimepath+=/Users/hideaki/.config/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.config/dein/repos/github.com/Shougo/dein.vim
 
 let s:dein_dir = expand('$HOME/.config/dein')
 let s:toml_dir = expand('$HOME/.config/nvim')

@@ -48,8 +48,17 @@ ln -snfv $HOME/.zprezto/runcoms/zlogout ~/.zlogout
 ln -snfv $HOME/.zprezto/runcoms/zpreztorc ~/.zpreztorc
 ln -snfv $HOME/.zprezto/runcoms/zprofile ~/.zprofile
 ln -snfv $HOME/.zprezto/runcoms/zshenv ~/.zshenv
+cd $HOME/.zprezto
+git submodule init
+git submodule update
+cd $THIS_DIR
 
-
+# neovim
+if [ ! -d $HOME/.config/dein ];then
+	curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > neovim_installer.sh
+	sh ./neovim_installer.sh ~/.config/dein
+	rm ./neovim_installer.sh
+fi
 
 cat << END
 **************************************************
