@@ -57,9 +57,9 @@ on_ft = ['python', 'javascript', 'markdown']
 
 
 # wakatime 用のプラグイン/トラッキング
-[[plugins]]
-repo = 'wakatime/vim-wakatime'
-on_i = 1
+#[[plugins]]
+#repo = 'wakatime/vim-wakatime'
+#on_i = 1
 
 
 # Gitの変更箇所にマークを付ける

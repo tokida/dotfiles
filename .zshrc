@@ -47,7 +47,8 @@ compinit -u
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # bluemix clis
-source /usr/local/Bluemix/bx/zsh_autocomplete
+# source /usr/local/Bluemix/bx/zsh_autocomplete
+if [ -f '/usr/local/Bluemix/bx/zsh_autocomplete' ]; then source '/usr/local/Bluemix/bx/zsh_autocomplete'; fi
 
 
 ##========================================================##
@@ -160,7 +161,10 @@ zle -N peco-wsk-action-list
 bindkey '^wa' peco-wsk-action-list
 
 # peco: todoist
-source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
+# source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
+if [ -f "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh" ];then
+	source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
+fi
 
 
 ##========================================================##
@@ -188,7 +192,7 @@ source "$GOPATH/src/github.com/sachaos/todoist/todoist_functions.sh"
 ##========================================================##
 # emoji suggestion
 ##========================================================##
-source $HOME/bin/emoji-cli/emoji-cli.zsh
+test -e "source $HOME/bin/emoji-cli/emoji-cli.zsh" && source "$HOME/bin/emoji-cli/emoji-cli.zsh"
 
 ##========================================================##
 # tabtab source for serverless package
