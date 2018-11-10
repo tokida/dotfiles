@@ -102,8 +102,10 @@ fi
 ##========================================================##
 # Golang
 ##========================================================##
-GOPATH=$HOME/dev
-PATH=$GOPATH/bin:$PATH
+# GOPATH=$HOME/dev
+GOROOT=$HOME/.go
+GOPATH=$HOME/go
+PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 
 
 ##========================================================##
