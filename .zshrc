@@ -1,10 +1,8 @@
 ##========================================================##
 ## zshrc
 ##========================================================##
-
 # .zshrc をコンパイルして .zshrc.zwc を生成するコマンド
 # zcompile .zshrc
-
 
 ##========================================================##
 ## リストの色つけの設定
@@ -47,8 +45,9 @@ compinit -u
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # bluemix clis
-# source /usr/local/Bluemix/bx/zsh_autocomplete
-if [ -f '/usr/local/Bluemix/bx/zsh_autocomplete' ]; then source '/usr/local/Bluemix/bx/zsh_autocomplete'; fi
+if [ -f "/usr/local/Bluemix/bx/zsh_autocomplete" ]; then 
+	source "/usr/local/Bluemix/bx/zsh_autocomplete"
+fi
 
 
 ##========================================================##
@@ -102,7 +101,6 @@ fi
 ##========================================================##
 # Golang
 ##========================================================##
-# GOPATH=$HOME/dev
 GOROOT=$HOME/.go
 GOPATH=$HOME/go
 PATH=$GOROOT/bin:$GOPATH/bin:$PATH
@@ -118,15 +116,6 @@ fi
 
 
 ##========================================================##
-# powerline
-##========================================================##
-# . ~/.pyenv/versions/2.7.13/envs/py2713todo/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-# この設定の場合には pyenv global defuse して利用
-# . ~/.anyenv/envs/pyenv/versions/2.7.13/envs/defuse/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-# . ~/.anyenv/envs/pyenv/versions/3.4.5/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
-
-
-##========================================================##
 # peco
 ##========================================================##
 case ${OSTYPE} in
@@ -138,6 +127,7 @@ case ${OSTYPE} in
 	}
 	;;
   linux*)
+	# apt install peco
 	function peco-history-selection() {
 	    BUFFER=$(history 1 | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\*?\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$LBUFFER")
 	    CURSOR=${#BUFFER}
@@ -170,22 +160,6 @@ fi
 
 
 ##========================================================##
-# SDKMAN
-##========================================================##
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="${HOME}/.sdkman"
-#[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"
-#source "${HOME}/.sdkman/bin/sdkman-init.sh"
-
-
-
-##========================================================##
-# iTerm2
-##========================================================##
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-
-##========================================================##
 # auto suggestion
 ##========================================================##
 ## source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -194,30 +168,38 @@ fi
 ##========================================================##
 # emoji suggestion
 ##========================================================##
-test -e "source $HOME/bin/emoji-cli/emoji-cli.zsh" && source "$HOME/bin/emoji-cli/emoji-cli.zsh"
-
-##========================================================##
-# tabtab source for serverless package
-##========================================================##
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f ${HOME}/.anyenv/envs/ndenv/versions/v8.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . ${HOME}/.anyenv/envs/ndenv/versions/v8.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f ${HOME}/.anyenv/envs/ndenv/versions/v8.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . ${HOME}/.anyenv/envs/ndenv/versions/v8.6.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+if [ -f "source $HOME/bin/emoji-cli/emoji-cli.zsh" ]; then
+	source "$HOME/bin/emoji-cli/emoji-cli.zsh"
+fi
 
 
-##=========================================================##
 # Google Cloud Platform SDK
 ##=========================================================##
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '${HOME}/bin/gcloud/path.zsh.inc' ]; then source '${HOME}/bin/gcloud/path.zsh.inc'; fi
+if [ -f "${HOME}/bin/gcloud/path.zsh.inc" ]; then
+	source "${HOME}/bin/gcloud/path.zsh.inc"
+fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '${HOME}/bin/gcloud/completion.zsh.inc' ]; then source '${HOME}/bin/gcloud/completion.zsh.inc'; fi
+if [ -f "${HOME}/bin/gcloud/completion.zsh.inc" ]; then
+	source "${HOME}/bin/gcloud/completion.zsh.inc"
+fi
+
 
 ##=========================================================##
-# istio
-# export PATH="$PATH:${HOME}/Desktop/today_work/istio-0.5.1/bin"
-export PATH="$PATH:${HOME}/Desktop/today_work/istio-0.7.1/bin"
+# Python Env (pyenv)
+##=========================================================##
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+if command -v pyenv 1>/dev/null 2>&1; then
+	eval "$(pyenv init -)"
+fi
 
+
+##=========================================================##
+# Local environment 
+##=========================================================##
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi
 
