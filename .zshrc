@@ -122,6 +122,9 @@ fi
 # この設定の場合には pyenv global defuse して利用
 # . ~/.anyenv/envs/pyenv/versions/2.7.13/envs/defuse/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 # . ~/.anyenv/envs/pyenv/versions/3.4.5/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 
 ##========================================================##
