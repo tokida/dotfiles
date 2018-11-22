@@ -1,0 +1,13 @@
+##=========================================================##
+# Local environment 
+##=========================================================##
+# ^ Python Env (pyenv)
+if [ -f "${HOME}/python/pj-kabto-201811/bin/activate" ]; then
+	source "${HOME}/python/pj-kabto-201811/bin/activate"
+fi
+
+# macbook for working
+# ^ Python Env (pyenv)
+if [ -f "${HOME}/Desktop/work/test/kabto/bin/activate" ]; then
+	source "${HOME}/Desktop/work/test/kabto/bin/activate"
+fi
