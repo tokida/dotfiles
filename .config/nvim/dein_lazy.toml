@@ -137,3 +137,14 @@ on_ft = ['markdown','asciidoc','python']
 # Wakatime
 [[plugins]]
 repo = 'wakatime/vim-wakatime'
+
+
+# Python 
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = 'python'
+
+
+# [[plugins]]
+#repo = 'google/yapf'
+#on_ft = 'python'
