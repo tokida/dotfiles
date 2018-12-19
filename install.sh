@@ -32,12 +32,14 @@ done
 echo "--sub: .config directory"
 cd .config
 for f in *; do
-    if [ -d ~/dotfiles/.config/${f} ];then
+	if [ -d ~/dotfiles/.config/${f} ];then
     	echo "-> .config/${f}"
         ln -snfv ~/dotfiles/.config/"$f" ~/.config/
     fi
 done
 cd $THIS_DIR
+ln -snfv $THIS_DIR/.config/libinput-gestures.conf ~/.config/libinput-gestures.conf
+
 
 # [ -e ~/.gitconfig.local ] || cp ~/dotfiles/.gitconfig.local.template ~/.gitconfig.local
 
