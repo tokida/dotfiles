@@ -1,5 +1,5 @@
 partial modifier_keys
 xkb_symbols "swapkeys" {
-  key <LCTL>  { [ Super_L, Super_L] };
-  key <LWIN>  { [ Control_L, Control_L] };
+  key <LALT>  { [ Hiragana ] };
+  key <RALT>  { [ Katakana ] };
 };

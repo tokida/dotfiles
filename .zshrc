@@ -67,6 +67,11 @@ alias todoist='todoist --color'
 alias vi='nvim'
 alias notebook='$HOME/.anyenv/envs/pyenv/versions/3.4.5/bin/jupyter notebook'
 
+if [ "$(uname)" = 'Linux' ];then
+	alias pbcopy='xclip -selection c'
+	alias pbpaste='xclip -selection c -o'
+fi
+
 
 
 ##========================================================##
@@ -202,4 +207,3 @@ fi
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
-
