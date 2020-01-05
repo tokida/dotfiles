@@ -13,7 +13,6 @@ if [ -f "${HOME}/Desktop/work/test/kabto/bin/activate" ]; then
 fi
 
 
-
 # macbook for working
 # ^ Python Env (pyenv)
 if [ -f "${HOME}/src/workshop/bin/activate" ]; then
@@ -24,3 +23,9 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export PATH=$PATH:$JAVA_HOME/bin
 export CLASSPATH=.:$JAVA_HOME/jre/lib:$JAVA_HOME/lib:$JAVA_HOME/lib/tools.jar 
 export PATH=$PATH:/home/hideaki/src/apache-maven-3.6.0/bin
+
+
+
+export PATH="$HOME/.ndenv/bin:$PATH"
+eval "$(ndenv init -)"
+

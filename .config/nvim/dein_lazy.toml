@@ -49,8 +49,12 @@ hook_add = '''
 		let g:ale_set_highlights = 0
 
 		let g:ale_linters = {
-			  \ 'markdown': ['textlint'],
-			  \ }
+			\ 'markdown': ['textlint'],
+			\ 'python': ['pylint'],
+			\ }
+		let g:ale_fixers = {
+			\ 'python': ['autopep8', 'black','isort']
+			\}
 '''
 on_ft = ['python', 'javascript', 'markdown']
 
@@ -81,23 +85,23 @@ hook_add = '''
 
 # Deoplete 補完プラグイン
 # https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
-[[plugins]] 
-repo = 'Shougo/deoplete.nvim'
-on_i = 1
-hook_add = '''
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#auto_complete_delay = 0
-  let g:deoplete#auto_complete_start_length = 1
-  let g:deoplete#enable_camel_case = 0
-  let g:deoplete#enable_ignore_case = 0
-  let g:deoplete#enable_refresh_always = 0
-  let g:deoplete#enable_smart_case = 1
-  let g:deoplete#file#enable_buffer_path = 1
-  let g:deoplete#max_list = 10000
-  inoremap <expr><tab> pumvisible() ? "\<C-n>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-'''
+#[[plugins]] 
+#repo = 'Shougo/deoplete.nvim'
+#on_i = 1
+#hook_add = '''
+#  let g:deoplete#enable_at_startup = 1
+#  let g:deoplete#auto_complete_delay = 0
+#  let g:deoplete#auto_complete_start_length = 1
+#  let g:deoplete#enable_camel_case = 0
+#  let g:deoplete#enable_ignore_case = 0
+#  let g:deoplete#enable_refresh_always = 0
+#  let g:deoplete#enable_smart_case = 1
+#  let g:deoplete#file#enable_buffer_path = 1
+#  let g:deoplete#max_list = 10000
+#  inoremap <expr><tab> pumvisible() ? "\<C-n>" :
+#        \ neosnippet#expandable_or_jumpable() ?
+#        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
+
 
 
 # caw comment out 

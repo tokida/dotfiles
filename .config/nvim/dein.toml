@@ -163,3 +163,14 @@ hook_add = '''
 	let g:diminactive_filetype_whitelist = []
 '''
 
+# TwitterClient
+[[plugins]]
+repo = 'twitvim/twitvim'
+hook_add = '''
+	let twitvim_browser_cmd = 'xgd-open' " fo Linux
+	let twitvim_force_ssl = 1 
+	let twitvim_count = 100
+	let twitvim_filter_enable = 1
+let twitvim_filter_regex = '!\v^【(自動|定期).*|(.*https?://ask\.fm.*)|#(countkun|1topi|bookmeter)|(.*(#|＃)[^\s]+){5,}|#RTした人全員|.*分以内に.*RTされたら|^!(RT)|^[^RT].*RT|RT\s.*RT\s'
+'''
+
