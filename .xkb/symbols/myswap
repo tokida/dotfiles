@@ -1,5 +1,34 @@
 partial modifier_keys
-xkb_symbols "swapkeys" {
+xkb_symbols "swap_caps_ctl" {
+  key <CAPS>  { [ Control_L ] };
+  key <LCTL>  { [ Caps_Lock ] };
+};
+
+
+xkb_symbols "keyboard-rbk" {
+  key <CAPS>  { [ Control_L ] };
+  key <LCTL>  { [ Caps_Lock ] };
+  key <LALT> { type[Group1] = "ONE_LEVEL",
+               symbols[Group1] = [ Super_L ] };
+  replace key <MUHE>  { [ Hiragana ] };
+  replace key <LWIN> { [ Katakana ]};
+  modifier_map Mod1 {  <MUHE>, <RWIN>};
+};
+
+
+xkb_symbols "keyboard-notebook" {
   key <LALT>  { [ Hiragana ] };
   key <RALT>  { [ Katakana ] };
+  key <LCTL>  { [ Caps_Lock ] };
+  key <CAPS>  { [ Control_L ] };
+};
+
+
+xkb_symbols "keyboard-usbkeyboard" {
+  key <LALT>  { [ Hiragana ] };
+  key <RALT>  { [ Katakana ] };
+  key <MENU>  { [ Katakana ] };
+  key <MUHE>  { [ Katakana ] };
+  key <LCTL>  { [ Caps_Lock ] };
+  key <CAPS>  { [ Control_L ] };
 };

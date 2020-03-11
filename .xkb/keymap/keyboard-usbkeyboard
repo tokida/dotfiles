@@ -2,6 +2,6 @@ xkb_keymap {
 	xkb_keycodes  { include "evdev+aliases(qwerty)"	};
 	xkb_types     { include "complete"	};
 	xkb_compat    { include "complete"	};
-	xkb_symbols   { include "pc+us+inet(evdev)+terminate(ctrl_alt_bksp)+myswap(keyboard-rbk)"	};
-	xkb_geometry  { include "pc(pc104)"	};
+	xkb_symbols   { include "pc+jp+inet(evdev)+terminate(ctrl_alt_bksp)+myswap(keyboard-usbkeyboard)"	};
+	xkb_geometry  { include "pc(jp106)"	};
 };

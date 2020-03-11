@@ -1,0 +1,10 @@
+partial modifier_keys
+xkb_symbols "swapkeys" {
+  key <LALT>  { [ Hiragana ] };
+  key <RALT>  { [ Katakana ] };
+  key <MENU>  { [ Katakana ] };
+  key <MUHE>  { [ Hiragana ] };
+  key <HENK>  { [ Katakana ] };
+  key <LCTL>  { [ Caps_Lock ] };
+  key <CAPS>  { [ Control_L ] };
+};
