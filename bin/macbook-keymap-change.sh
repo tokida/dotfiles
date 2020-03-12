@@ -8,19 +8,37 @@ HOME=/home/hideaki/
 export DISPLAY
 CHECKLOG=/tmp/keycheck.log
 
-# iBuffalo keyboard deice
-keyid=`xinput -list | grep -e "USB Keyboard" -e "Bluetooth Keyboard  " | awk '{print$4}' | awk -F= '{print$2}'`
 echo "start keymap change " `date` >> $CHECKLOG
-echo "keyid : " $keyid >> $CHECKLOG
 xinput -list >> $CHECKLOG 2>&1
+keyid=""
 
+# 内蔵キーボード
+keyid=`xinput -list | grep -e "AT Trans" | awk -F= '{print$2}' | awk '{print$1}'`
+echo "keyid : " $keyid >> $CHECKLOG
 if [ $keyid -gt 0 ]; then
-	#xkbcomp -i $keyid -I$HOME/.xkb $HOME/.xkb/keymap/tkfbp02 $DISPLAY
-	xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keyboard-rbk $DISPLAY  >> /dev/null 2>&1
-	echo "map : tkfbp02" >> $CHECKLOG
-else
 	xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keyboard-notebook $DISPLAY  >> /dev/null 2>&1
 	echo "map : normal" >> $CHECKLOG
 fi
 
+# キーボードに分けて条件を記載する
+# iBuffalo keyboard device
+keyid=`xinput -list | grep -e "USB Keyboard" | awk -F= '{print$2}' | awk '{print$1}'`
+echo "keyid : " $keyid >> $CHECKLOG
+if [ "$keyid" != "" ];then
+if [ $keyid -gt 0 ] ; then
+	xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keyboard-usbkeyboard $DISPLAY
+	echo "map : usb keyboard" >> $CHECKLOG
+fi
+fi
+
+
+# 外付け折りたたみキーボード
 #echo $keyid >> /tmp/keycheck.log
+keyid=`xinput -list | grep -e "Bluetooth Keyboard  " | awk '{print$4}' | awk -F= '{print$2}'`
+echo "keyid : " $keyid >> $CHECKLOG
+if [ "$keyid" != "" ];then
+if [ $keyid -gt 0 ] && [ -n $keyid ]; then
+	xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keyboard-rbk $DISPLAY  >> /dev/null 2>&1
+	echo "map : keyboard-rbk" >> $CHECKLOG
+fi
+fi
