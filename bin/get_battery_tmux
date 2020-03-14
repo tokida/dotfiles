@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Linux Mint 環境での利用
+
+if battery_info=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | awk '{print$2}') ; then
+	battery_quantity=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage  | awk -F% '{print$1}' | awk '{print$2}')
+	if [[ ! $battery_info =~ "discharging" ]]; then
+		battery="#[bg=cyan,fg=black] ⚡ $battery_quantity% #[default]"
+	elif (( $battery_quantity < 16 )); then
+		battery="#[bg=red,fg=white] $battery_quantity% #[default]"
+	else
+		battery="#[bg=cyan,fg=black] $battery_quantity% #[default]"
+	fi
+  	echo $battery
+fi
+

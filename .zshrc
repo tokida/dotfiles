@@ -21,6 +21,12 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
 
 
+
+##========================================================##
+## addtional path
+#=========================================================##
+PATH=$HOME/dotfiles/bin:$PATH
+
 ##========================================================##
 # Customize to your needs...
 # Created by newuser for 5.3.1
