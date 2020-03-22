@@ -32,3 +32,8 @@ xkb_symbols "keyboard-usbkeyboard" {
   key <LCTL>  { [ Caps_Lock ] };
   key <CAPS>  { [ Control_L ] };
 };
+
+xkb_symbols "keyboard-atom66" {
+  key <LALT>  { [ Hiragana ] };
+  key <RALT>  { [ Katakana ] };
+};

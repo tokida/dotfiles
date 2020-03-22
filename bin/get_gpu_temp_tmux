@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Linux Mint 環境での利用
+
+gpu_temperature=$(nvidia-smi -q -d temperature | grep -i 'GPU Current Temp' | awk '{print$5}')
+if [[ ${gpu_temperature} != "" ]]; then
+	temp="#[bg=red,fg=white] 🔥 ${gpu_temperature}C #[default]"
+	echo $temp
+fi
+

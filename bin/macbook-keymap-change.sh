@@ -38,7 +38,21 @@ keyid=`xinput -list | grep -e "Bluetooth Keyboard  " | awk '{print$4}' | awk -F=
 echo "keyid : " $keyid >> $CHECKLOG
 if [ "$keyid" != "" ];then
 if [ $keyid -gt 0 ] && [ -n $keyid ]; then
-	xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keyboard-rbk $DISPLAY  >> /dev/null 2>&1
+	# xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keyboard-rbk $DISPLAY  >> /dev/null 2>&1
+	xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keyboard-atom66 $DISPLAY  >> /dev/null 2>&1
 	echo "map : keyboard-rbk" >> $CHECKLOG
 fi
 fi
+
+
+# Niz atom66 keyboard
+#echo $keyid >> /tmp/keycheck.log
+keyid=`xinput -list | grep -e "66EC-S Keyboard  " |  awk -F= '{print$2}' | awk '{print$1}'`
+echo "keyid : " $keyid >> $CHECKLOG
+if [ "$keyid" != "" ];then
+if [ $keyid -gt 0 ] && [ -n $keyid ]; then
+	xkbcomp -I$HOME/.xkb $HOME/.xkb/keymap/keyboard-atom66 $DISPLAY  >> /dev/null 2>&1
+	echo "map : keyboard-atom66" >> $CHECKLOG
+fi
+fi
+
